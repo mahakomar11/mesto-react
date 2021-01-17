@@ -1,0 +1,5 @@
+.place__description {
+  margin: 21px 21px 24px;
+  display: flex;
+  justify-content: space-between;
+}

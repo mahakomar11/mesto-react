@@ -1,0 +1,7 @@
+.place__photo-container {
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+}

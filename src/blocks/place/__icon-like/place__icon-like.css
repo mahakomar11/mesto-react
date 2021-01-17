@@ -1,0 +1,21 @@
+.place__icon-like {
+  height: 18px;
+  width: 20px;
+  border: 0;
+  background-color: inherit;
+  background-image: url('../../../images/Vectorlike.svg');
+  background-size: 20px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+}
+
+.place__icon-like:hover {
+  opacity: 0.6;
+  transition: ease-out 0.5s;
+}
+
+.place__icon-like:focus {
+  outline: 0;
+}
