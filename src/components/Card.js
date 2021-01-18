@@ -4,7 +4,7 @@ function Card(props) {
 	}
 
 	return (
-		<div>
+		<li className="place">
 			<div className="place__photo-container" onClick={handleClick}>
 				<img
 					src={props.card.link}
@@ -28,7 +28,7 @@ function Card(props) {
 					<p className="place__like-count">{props.card.likes.length}</p>
 				</div>
 			</div>
-		</div>
+		</li>
 	);
 }
 

@@ -10,15 +10,14 @@ function Main(props) {
 	const [cards, setCards] = React.useState([]);
 
 	React.useEffect(() => {
-		Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
-			([userData, cardsData]) => {
+		Promise.all([api.getUserInfo(), api.getInitialCards()])
+			.then(([userData, cardsData]) => {
 				setUserName(userData.name);
 				setUserDescription(userData.about);
 				setUserAvatar(userData.avatar);
 				setCards(cardsData);
-			}
-		);
-	});
+			}).catch((err) => console.log(err))
+	}, []);
 
 	return (
 		<main>
@@ -53,10 +52,8 @@ function Main(props) {
 
 			<section className="places">
 				<ul className="places__grid">
-					{cards.map((card, i) => (
-						<li className="place" key={i}>
-							<Card card={card} onCardClick={props.onCardClick}/>
-						</li>
+					{cards.map((card) => (
+						<Card card={card} onCardClick={props.onCardClick} key={card._id}/>
 					))}
 				</ul>
 			</section>
