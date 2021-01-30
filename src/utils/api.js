@@ -43,7 +43,8 @@ class Api {
     }).then((response) => this._handleResponse(response));
   }
 
-  handleLikeClick(cardId, method) {
+  handleLike(cardId, isLiked) {
+    const method = isLiked ? "DELETE" : "PUT";
     return fetch(`${this._cardsUrl}/likes/${cardId}`, {
       method: method,
       headers: this._headers,
