@@ -1,34 +1,9 @@
 import React from "react";
-import api from "../utils/api";
-import spinnerPath from "../images/spinner.gif";
 import Card from "./Card";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function Main(props) {
-	const [cards, setCards] = React.useState([]);
-
-	React.useEffect(() => {
-		api
-			.getInitialCards()
-			.then((data) => {
-				setCards(data);
-			})
-			.catch((err) => console.log(err));
-	}, []);
-
 	const currentUser = React.useContext(CurrentUserContext);
-
-	function handleCardLike(card) {
-		const isLiked = card.likes.some((user) => user._id === currentUser.id);
-
-		api
-			.handleLike(card._id, isLiked)
-			.then((newCard) => {
-				const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
-				setCards(newCards);
-			})
-			.catch((err) => console.log(err));
-	}
 
 	return (
 		<main>
@@ -60,14 +35,15 @@ function Main(props) {
 					onClick={props.onAddPlace}
 				></button>
 			</section>
-
+		
 			<section className="places">
 				<ul className="places__grid">
-					{cards.map((card) => (
+					{props.cards.map((card) => (
 						<Card
 							card={card}
 							onCardClick={props.onCardClick}
-							onLikeClick={handleCardLike}
+							onLikeClick={props.onCardLike}
+							onDeleteClick={props.onCardDelete}
 							key={card._id}
 						/>
 					))}

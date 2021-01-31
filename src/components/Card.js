@@ -12,8 +12,12 @@ function Card(props) {
 		props.onLikeClick(props.card);
 	}
 
-	const isMine = props.card.owner === currentUser.id;
-	const isLiked = props.card.likes.some(user => user._id === currentUser.id);
+	function handleDeleteClick() {
+		props.onDeleteClick(props.card);
+	}
+
+	const isMine = props.card.owner._id === currentUser.id;
+	const isLiked = props.card.likes.some((user) => user._id === currentUser.id);
 
 	return (
 		<li className="place">
@@ -27,7 +31,10 @@ function Card(props) {
 			<button
 				type="button"
 				area-label="Delete"
-				className={`place__icon-delete ${isMine && 'place__icon-delete_active'}`}
+				className={`place__icon-delete ${
+					isMine && "place__icon-delete_active"
+				}`}
+				onClick={handleDeleteClick}
 			></button>
 			<div className="place__description">
 				<h2 className="place__title">{props.card.name}</h2>
@@ -35,7 +42,9 @@ function Card(props) {
 					<button
 						type="button"
 						area-label="Like"
-						className={`place__icon-like ${isLiked && 'place__icon-like_active'}`}
+						className={`place__icon-like ${
+							isLiked && "place__icon-like_active"
+						}`}
 						onClick={handleLikeClick}
 					></button>
 					<p className="place__like-count">{props.card.likes.length}</p>
