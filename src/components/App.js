@@ -95,9 +95,9 @@ function App() {
 			.addCard(cardData)
 			.then((newCard) => {
 				setCards([newCard, ...cards]);
+				closeAllPopups();
 			})
 			.catch((err) => console.log(err));
-		closeAllPopups();
 	}
 
 	// Update user's data handlers
@@ -110,9 +110,9 @@ function App() {
 					name: newInfo.name,
 					about: newInfo.about,
 				});
+				closeAllPopups();
 			})
 			.catch((err) => console.log(err));
-		closeAllPopups();
 	}
 
 	function handleUpdateAvatar(newAvatar) {
@@ -123,9 +123,9 @@ function App() {
 					...currentUser,
 					avatar: newAvatar.avatar,
 				});
+				closeAllPopups();
 			})
 			.catch((err) => console.log(err));
-		closeAllPopups();
 	}
 
 	return (
@@ -174,3 +174,4 @@ export default App;
 // TODO: add loading messages to popups
 // TODO: add validation
 // TODO: add closing popups by click on backroud and by Esc
+// TODO: document the code (https://www.inkoop.io/blog/a-guide-to-js-docs-for-react-js/)
